@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/ITCR_CE_Lenguajes_Tarea3_paCEman.dir/main.c.o  -o ITCR_CE_Lenguajes_Tarea3_paCEman 

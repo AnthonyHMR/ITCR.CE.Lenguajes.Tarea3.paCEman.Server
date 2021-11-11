@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anthony/Documents/2021/Segundo semestre/ITCR.CE.Lenguajes.Tarea3.paCEman/main.c
+unistd.h
+-
+netdb.h
+-
+netinet/in.h
+-
+sys/socket.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+errno.h
+-
+stdio.h
+-
+string.h
+-
+
