@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/anthony/Documents/2021/Segundo semestre/ITCR.CE.Lenguajes.Tarea3.paCEman/main.c" "/home/anthony/Documents/2021/Segundo semestre/ITCR.CE.Lenguajes.Tarea3.paCEman/cmake-build-debug/CMakeFiles/ITCR_CE_Lenguajes_Tarea3_paCEman.dir/main.c.o"
+  "/home/anthony/Documents/2021/Segundo semestre/ITCR.CE.Lenguajes.Tarea3.paCEman.server/main.c" "/home/anthony/Documents/2021/Segundo semestre/ITCR.CE.Lenguajes.Tarea3.paCEman.server/cmake-build-debug/CMakeFiles/ITCR_CE_Lenguajes_Tarea3_paCEman.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
