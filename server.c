@@ -30,7 +30,7 @@ int main(int argc , char *argv[])
 	fd_set readfds;
 		
 	//a message
-	char *message = "ECHO Daemon v1.0 \r\n";
+	char *message = "Login";
 	
 	//initialise all client_socket[] to 0 so not checked
 	for (i = 0; i < max_clients; i++)
@@ -176,7 +176,12 @@ int main(int argc , char *argv[])
 					//set the string terminating NULL byte on the end
 					//of the data read
 					buffer[valread] = '\0';
+					printf("Cliente: %s \n", buffer);
+					if (strcmp(buffer, "Puntaje")==0){
+					printf("%s", "recibiendo puntos \n");
+					}
 					send(sd , buffer , strlen(buffer) , 0 );
+					memset(&buffer[0], 0, sizeof(buffer));
 				}
 			}
 		}
