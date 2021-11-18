@@ -12,8 +12,15 @@
 #include "constants.h"
 #include "Partida/flujo.h"
 
+//inicializar las estructuras que describen una partida
 struct partida partida1 = {0}, partida2 = {0};
 
+/**
+ * setInicio(flag): inicializa los valores de la partida
+ * en curso segun el cliente que ingrese
+ * params: int flag bandera para validar cual cliente es
+ * return: void
+ * */
 void setInicio(int flag){
     int ghosts, frutas;
     printf("%s", "Ingrese la cantidad de ghosts: ");
@@ -36,14 +43,23 @@ void setInicio(int flag){
     }
 
 }
+
+/**
+ * startServer(): implementa el uso de sockets
+ * para utilizar el protocolo de comunicacion
+ * IP/TCP, acepta hasta 3 clientes en simultáneo y 
+ * utiliza la funcion select() para manejar los multiples
+ * descriptores de archivos para los sockets
+ * */
+
 void startServer(){
     int opt = TRUEFLAG;
-    int master_socket , addrlen , new_socket , client_socket[30] ,
-            max_clients = 30 , activity, i , valread , sd;
+    int master_socket , addrlen , new_socket , client_socket[3] ,
+            max_clients = 3 , activity, i , valread , sd;
     int max_sd;
     struct sockaddr_in address;
 
-    char buffer[1025]; //Buffer de datos
+    char buffer[MAX]; //Buffer de datos
 
     //set de descriptores de archivos
     fd_set readfds;
@@ -122,7 +138,7 @@ void startServer(){
         //activity se encarga de escuchar donde hay actividad en
         // los descriptores de archivos, el parametro timeout es NULL
         //de manera que escucha indefinidamente
-        activity = select( max_sd + 1 , &readfds , NULL , NULL , NULL);
+        activity = select(max_sd + 1 , &readfds , NULL , NULL , NULL);
 
         if ((activity < 0) && (errno!=EINTR))
         {
@@ -172,7 +188,7 @@ void startServer(){
             if (FD_ISSET( sd , &readfds))
             {
                 //chequear el mensaje y si fue para desconexion del socket
-                if ((valread = read( sd , buffer, 1024)) == 0)
+                if ((valread = read( sd , buffer, MAX)) == 0)
                 {
                     getpeername(sd , (struct sockaddr*)&address , \
 						(socklen_t*)&addrlen);
@@ -209,15 +225,6 @@ void startServer(){
 
 int main(int argc , char *argv[])
 {
-    /*Creating a json object*/
-    json_object * jobj = json_object_new_object();
-    /*Creating a json integer*/
-    json_object *jint = json_object_new_int(10);
-    /*Form the json object*/
-    json_object_object_add(jobj,"Puntaje", jint);
-    const char *puntaje = json_object_to_json_string(jobj);
-    /*Now printing the json object*/
-
     startServer();
 	return 0;
 }
